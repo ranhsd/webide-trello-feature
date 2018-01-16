@@ -1,0 +1,60 @@
+{
+	"name": "trello_app",
+	"description": "",
+	"i18n": "trello_app/i18n/i18n",
+	"requires": {
+		"services": [
+			"command",
+			"commandGroup",
+			"perspective"
+		]
+	},
+	"provides": {
+		"services": {
+			"board": {
+				"implements": "sap.watt.common.service.ui.Part",
+				"module": "trello_app/service/toggleMyRightSidePane"
+			}
+		},
+
+		"interfaces": {
+
+		}
+	},
+	"configures": {
+		"services": {
+			"command:commands": [{
+				"id": "myrightpane.switch",
+				"label": "Trello Tasks",
+				"icon": "trello_app/image/trello-logo-blue.png",
+				"service": {
+					"implements": "sap.watt.common.service.ide.AbstractUIPartToggler",
+					"module": "sap.watt.common.perspective/command/AbstractUIPartToggler",
+					"configuration": {
+						"id": "myrightpane.switch",
+						"service": "@board",
+						"perspective": "development"
+					}
+				}
+			}],
+			"commandGroup:items": [{
+				"parent": "view",
+				"command": "myrightpane.switch",
+				"prio": "1"
+			}, {
+				"parent": "applicationRightSidebar",
+				"command": "myrightpane.switch",
+				"prio": "100"
+			}],
+			"perspective:views": [{
+				"id": "board",
+				"service": "@board",
+				"area": "right",
+				"cssclass": "explorer splitterContainer selectable"
+			}]
+		}
+	},
+	"subscribes": {
+
+	}
+}

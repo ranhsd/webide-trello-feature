@@ -1,0 +1,11 @@
+{
+	"name": "trello",
+	"title": "trello",
+	"version": "1.0.0",
+	"description": "Trello integration",
+	"homepage": "",
+	"icon": "",
+	"bundledPlugins": {
+		"trello_app": "file:trello_app"
+	}
+}
