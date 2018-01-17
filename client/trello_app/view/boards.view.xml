@@ -18,7 +18,7 @@
 						id="container"
 						items="{cards>/data}"
 						growing="true"
-						growingThreshold="3"
+						growingThreshold="10"
 						growingScrollToLoad="true" >
 						<NotificationListItem
 							title="{cards>name}"
